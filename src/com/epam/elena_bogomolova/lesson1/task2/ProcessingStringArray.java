@@ -90,9 +90,10 @@ public class ProcessingStringArray {
         int amountunic = Integer.MAX_VALUE;
         int numberunic = 0;
         for (int i = 0; i < strings.size(); i++) {
-            HashSet<String> unic = getUnicElements(strings, i);
-            if (unic.size() < amountunic) {
-                amountunic = unic.size();
+//            HashSet<String> unic = getUnicElements(strings, i);
+            int num = getUniqElementsNum(strings.get(i));
+            if (num < amountunic) {
+                amountunic = num;
                 numberunic = i;
             }
         }
@@ -103,31 +104,23 @@ public class ProcessingStringArray {
 //    Найти первое слово, состоящее только из различных символов.
     private void firstAllDifferentSymbols(List<String> strings) {
         System.out.println("\n The first string with different symbols only:");
-        int numberunic = Integer.MAX_VALUE;
         for (int i = 0; i < strings.size(); i++) {
-            HashSet<String> unic = getUnicElements(strings, i);
-            if (unic.size() == strings.get(i).length()) {
-                numberunic = i;
-                break;
+            if (getUniqElementsNum(strings.get(i)) == strings.get(i).length()) {
+                System.out.println(strings.get(i));
+                return;
             }
         }
-        if (numberunic < strings.size()) {
-            System.out.println(strings.get(numberunic));
-        } else {
-            System.out.println("there are no strings with different symbols only");
-        }
+        System.out.println("there are no strings with different symbols only");
     }
 
     //        task 2.6
 //    Найти слово, состоящее только из цифр. Если таких слов больше одного, найти второе из них.
     private void secondNumericString(List<String> strings) {
         System.out.println("\n The second (if exists) or single string with numbers only:");
-        List<Integer> intstrings = new ArrayList<>();
+        List<String> intstrings = new ArrayList<>();
         for (String st : strings) {
-            try {
-                intstrings.add(Integer.parseInt(st));
-            } catch (NumberFormatException e) {
-                break;
+            if (containsDigitsOnly(st)) {
+                intstrings.add(st);
             }
         }
         if (intstrings.size() > 1) {
@@ -150,12 +143,29 @@ public class ProcessingStringArray {
         return (avr);
     }
 
-    private HashSet<String> getUnicElements(List<String> strings, int i) {
+//    private HashSet<String> getUnicElements(List<String> strings, int i) {
+//        List<String> symbolsset = new ArrayList<>();
+//        String element = strings.get(i);
+//        for (int j = 0; j < element.length(); j++) {
+//            symbolsset.add(element.substring(j, j+1));
+//        }
+//        return new HashSet<>(symbolsset);
+//    }
+
+    private int getUniqElementsNum(String item) {
         List<String> symbolsset = new ArrayList<>();
-        String element = strings.get(i);
-        for (int j = 0; j < element.length(); j++) {
-            symbolsset.add(element.substring(j, j+1));
+        for (int j = 0; j < item.length(); j++) {
+            symbolsset.add(String.valueOf(item.charAt(j)));
         }
-        return new HashSet<>(symbolsset);
+        return (new HashSet<>(symbolsset)).size();
+    }
+
+    private Boolean containsDigitsOnly(String item) {
+        for (int j = 0; j < item.length(); j++) {
+             if (!Character.isDigit(item.charAt(j))){
+                 return false;
+             }
+        }
+        return true;
     }
 }
