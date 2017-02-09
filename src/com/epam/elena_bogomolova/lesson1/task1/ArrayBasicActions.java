@@ -1,8 +1,6 @@
 package com.epam.elena_bogomolova.lesson1.task1;
 
 
-import java.lang.reflect.Array;
-
 public class ArrayBasicActions {
     public int[] createArray(int length, int minElement, int maxElement) {
         System.out.println("initial array with " + length + " integer numbers:");
