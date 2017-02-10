@@ -8,7 +8,7 @@ public class Calculator {
 
     private float result;
     private float number;
-    private boolean correctinput;
+    private boolean correctInput;
 
     public static void main(String[] args) throws IOException {
         Calculator app = new Calculator();
@@ -17,21 +17,21 @@ public class Calculator {
 
     private void startCalculator() throws IOException {
         printWelcomeMenu();
-        boolean continueworking = true;
-        while (continueworking) {
+        boolean continueWorking = true;
+        while (continueWorking) {
             float num1 = getNumber(1);
             String operation = getOperation();
             float num2 = getNumber(2);
             calculateAndShowResult(num1, num2, operation);
-            continueworking = checkForContinue();
+            continueWorking = checkForContinue();
         }
     }
 
     private boolean checkForContinue() throws IOException {
         System.out.println("Do you want to continue? Print N or \"no\" if you want to stop calculations. Enter any other symbol to continue.");
         Scanner sc = new Scanner(System.in);
-        String wishtocontinue = sc.nextLine();
-        if (wishtocontinue.equalsIgnoreCase("n") || wishtocontinue.equalsIgnoreCase("no")) {
+        String wishToContinue = sc.nextLine();
+        if (wishToContinue.equalsIgnoreCase("n") || wishToContinue.equalsIgnoreCase("no")) {
             System.out.println("Goodbye!");
             return false;
         } else {
@@ -51,7 +51,7 @@ public class Calculator {
     }
 
     private float getNumber(int i) {
-        correctinput = false;
+        correctInput = false;
         String num = "";
         if (i == 1) {
             num = "first";
@@ -60,11 +60,11 @@ public class Calculator {
             num = "second";
         }
         System.out.println("hint: enter " + num + " number and press Enter");
-        while (!correctinput) {
+        while (!correctInput) {
             try {
                 Scanner sc = new Scanner(System.in);
                 number = sc.nextFloat();
-                correctinput = true;
+                correctInput = true;
             } catch (InputMismatchException e) {
                 System.out.println("Incorrect data entered! Try again. Please enter " + num + " number");
             }
@@ -73,14 +73,14 @@ public class Calculator {
     }
 
     private String getOperation() {
-        correctinput = false;
+        correctInput = false;
         String operation = null;
-        while (!correctinput) {
+        while (!correctInput) {
             System.out.println("hint: enter operation (+, -, * or /) and press Enter");
             Scanner sc = new Scanner(System.in);
             operation = sc.nextLine();
             if (operation.equals("+") || operation.equals("-") || operation.equals("*") || operation.equals("/")) {
-                correctinput = true;
+                correctInput = true;
             } else System.out.println(" You entered incorrect operator, please try again");
         }
         return operation;

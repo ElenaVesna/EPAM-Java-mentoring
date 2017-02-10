@@ -5,7 +5,7 @@ import java.util.function.IntPredicate;
 
 public class ProcessingNumericalArray extends ArrayBasicActions {
 
-    private int arrayLength = 20;
+    private int arrayLength = 19;
     private int minElement = -10;
     private int maxElement = 10;
 
@@ -33,7 +33,7 @@ public class ProcessingNumericalArray extends ArrayBasicActions {
 
 
     //     task 1.1
-    public void switchPlacesMaxMinusMinPlus() {
+    private void switchPlacesMaxMinusMinPlus() {
         int[] myArray = new ArrayBasicActions().createArray(arrayLength, minElement, maxElement);
         int maxMinus = myArray[0];
         int positionMaxMinus = 0;
@@ -61,17 +61,17 @@ public class ProcessingNumericalArray extends ArrayBasicActions {
     }
 
     //     task 1.2
-    public void countEvenElements() {
+    private void countEvenElements() {
         int[] myArray = new ArrayBasicActions().createArray(20, -10, 10);
-        int sumEvenElenemts = 0;
+        int sumEvenElem = 0;
         for (int i = 1; i < myArray.length; i += 2) {
-            sumEvenElenemts += myArray[i];
+            sumEvenElem += myArray[i];
         }
-        System.out.println("Sum of even elements: " + sumEvenElenemts);
+        System.out.println("Sum of even elements: " + sumEvenElem);
     }
 
     //    task 1.3
-    public void replaceElementsLessThanSpecifiedByNumber(int specifiedNumber, int replacingNumber) {
+    private void replaceElementsLessThanSpecifiedByNumber(int specifiedNumber, int replacingNumber) {
         int[] myArray = new ArrayBasicActions().createArray(arrayLength, minElement, maxElement);
         System.out.println("\n array without negative elements:");
         for (int i = 0; i < myArray.length; i++) {
@@ -83,7 +83,7 @@ public class ProcessingNumericalArray extends ArrayBasicActions {
     }
 
     //    task 1.3 - second variant
-    public void replaceElementsByNumberLambda(IntPredicate predicate, int replacingNumber) {
+    private void replaceElementsByNumberLambda(IntPredicate predicate, int replacingNumber) {
         int[] myArray = new ArrayBasicActions().createArray(arrayLength, minElement, maxElement);
         System.out.println("\n array without negative elements:");
         for (int i = 0; i < myArray.length; i++) {
@@ -95,7 +95,7 @@ public class ProcessingNumericalArray extends ArrayBasicActions {
     }
 
     //    task 1.4
-    public void multiplyPositiveAfterNegative(int multiplier) {
+    private void multiplyPositiveAfterNegative(int multiplier) {
         int[] array = new ArrayBasicActions().createArray(arrayLength, minElement, maxElement);
         for (int i = 0; i < array.length - 1; i++) {
             if (array[i] < 0 && array[i + 1] > 0) {
@@ -107,7 +107,7 @@ public class ProcessingNumericalArray extends ArrayBasicActions {
     }
 
     //    task 1.5
-    public void differenceMinAverage() {
+    private void differenceMinAverage() {
         int[] array = new ArrayBasicActions().createArray(arrayLength, minElement, maxElement);
         int minimum = array[0];
         int sum = 0;
@@ -123,24 +123,24 @@ public class ProcessingNumericalArray extends ArrayBasicActions {
     }
 
     //    task 1.6
-    public void oddRepeatingElements() {
+    private void oddRepeatingElements() {
         int[] array = new ArrayBasicActions().createArray(arrayLength, minElement, maxElement);
-        int halflength = (int) array.length / 2;
-        int[] oddelements = new int[arrayLength / 2];
-        for (int i = 0; i < halflength; i++) {
-            oddelements[i] = array[2 * i + 1];
+        int halfLength = (int) array.length / 2;
+        int[] oddElements = new int[arrayLength / 2];
+        for (int i = 0; i < halfLength; i++) {
+            oddElements[i] = array[2 * i + 1];
         }
-        ArrayList<Integer> repeatingelements = new ArrayList<Integer>();
-        for (int i = 1; i < oddelements.length; i++) {
-            int element = oddelements[i];
+        ArrayList<Integer> repeatingElements = new ArrayList<>();
+        for (int i = 1; i < oddElements.length; i++) {
+            int element = oddElements[i];
             for (int j = 0; j < i; j++) {
-                if (element == oddelements[j]) {
-                    repeatingelements.add(element);
+                if (element == oddElements[j]) {
+                    repeatingElements.add(element);
                 }
             }
         }
-        HashSet<Integer> unicelements = new HashSet<Integer>(repeatingelements);
+        HashSet<Integer> uniqElements = new HashSet<>(repeatingElements);
         System.out.println("Repeating elements on odd places:");
-        System.out.println(unicelements);
+        System.out.println(uniqElements);
     }
 }
