@@ -1,27 +1,37 @@
 package com.epam.elena_bogomolova.lesson2.Supplemental;
 
-public class Equipment {
-    private long power;
-    private boolean isTurnedOn;
-    private String place;
-    private long weight;
+public abstract class Equipment {
+    protected long power;
+    protected String place;
+//    protected long weight;
+//    protected boolean stateOn;
 
-    public Equipment(long power, boolean isTurnedOn, String place) {
+    public Equipment(long power, String place) {
         this.power = power;
-        this.isTurnedOn = isTurnedOn;
+//        this.stateOn = stateOn;
         this.place = place;
+//        this.weight = weight;
     }
 
-    public void turnOn() {
-        isTurnedOn = true;
+//    public Equipment (long power, String place, long weight) {
+//        this(power, false, place, weight);
+//    }
+
+    public boolean turnOn() {
+        return true;
     }
 
-    public void turnOff() {
-        isTurnedOn = false;
+    public boolean turnOff() {
+        return false;
     }
 
     public void move(String newPlace) {
         place = newPlace;
     }
 
+    public void startSleepMode(int downtime) {
+        if (downtime > 10) {
+            System.out.println("I'm in sleeping mode");
+        }
+    }
 }

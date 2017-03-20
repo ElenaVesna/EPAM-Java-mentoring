@@ -4,10 +4,11 @@ import com.epam.elena_bogomolova.lesson2.Supplemental.Equipment;
 import com.epam.elena_bogomolova.lesson2.Supplemental.*;
 
 
-public class PC extends Equipment implements FunItem, SleepMode, PlannedStartStop {
+public class PC extends Equipment implements FunItem, PlannedActions {
 
-    public PC(long power, boolean isTurnedOn, String place) {
-        super(power, isTurnedOn, place);
+
+    public PC(long power, String place) {
+        super(power, place);
     }
 
     @Override
@@ -17,6 +18,31 @@ public class PC extends Equipment implements FunItem, SleepMode, PlannedStartSto
 
     @Override
     public void playVideo() {
+
+    }
+
+    @Override
+    public void playGame() {
+
+    }
+
+    @Override
+    public void planStart(long startTime) {
+
+    }
+
+    @Override
+    public void planStop(long stopTime) {
+
+    }
+
+    @Override
+    public void startSleepMode() {
+
+    }
+
+    @Override
+    public void stopSleepMode() {
 
     }
 }

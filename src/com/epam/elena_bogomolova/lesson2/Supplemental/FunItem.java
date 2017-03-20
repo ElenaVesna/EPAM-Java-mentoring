@@ -5,4 +5,5 @@ public interface FunItem {
 
     void playMusic();
     void playVideo();
+    void playGame();
 }

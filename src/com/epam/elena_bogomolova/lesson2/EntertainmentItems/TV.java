@@ -2,12 +2,12 @@ package com.epam.elena_bogomolova.lesson2.EntertainmentItems;
 
 import com.epam.elena_bogomolova.lesson2.Supplemental.Equipment;
 import com.epam.elena_bogomolova.lesson2.Supplemental.FunItem;
-import com.epam.elena_bogomolova.lesson2.Supplemental.SleepMode;
 
-public class TV extends Equipment implements FunItem, SleepMode {
+public class TV extends Equipment implements FunItem {
 
-    public TV(long power, boolean isTurnedOn, String place) {
-        super(power, isTurnedOn, place);
+
+    public TV(long power, String place) {
+        super(power, place);
     }
 
     @Override
@@ -18,5 +18,10 @@ public class TV extends Equipment implements FunItem, SleepMode {
     @Override
     public void playVideo() {
 
+    }
+
+    @Override
+    public void playGame() {
+        System.out.println("I cannot play games");
     }
 }
