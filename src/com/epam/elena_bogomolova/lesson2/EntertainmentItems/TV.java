@@ -6,8 +6,8 @@ import com.epam.elena_bogomolova.lesson2.Supplemental.FunItem;
 public class TV extends Equipment implements FunItem {
 
 
-    public TV(long power, String place) {
-        super(power, place);
+    public TV(String place) {
+        super(place);
     }
 
     @Override

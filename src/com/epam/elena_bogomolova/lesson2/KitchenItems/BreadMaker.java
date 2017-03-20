@@ -9,11 +9,10 @@ public class BreadMaker extends Equipment implements IFoodCooking {
     private boolean foodIn;
     private long cookTime;
 
-    public BreadMaker(long power, String place) {
-        super(power, place);
+    public BreadMaker(String place) {
+        super(place);
         this.power = 20;
         this.place = "kitchen";
-//        this.weight = 5;
     }
 
     @Override
@@ -22,17 +21,13 @@ public class BreadMaker extends Equipment implements IFoodCooking {
     }
 
     @Override
-    public void setTemperature(int degree) {
-
-    }
-
-    @Override
     public void addFood(int foodWeight) {
-        System.out.println("put flower, butter, sugar, ");
+        System.out.println("put flower, butter, sugar, eggs");
     }
 
     @Override
     public void removeFood(int foodWeight) {
+
     }
 
     @Override

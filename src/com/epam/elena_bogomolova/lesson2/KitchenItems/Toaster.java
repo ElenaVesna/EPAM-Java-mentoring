@@ -5,18 +5,14 @@ import com.epam.elena_bogomolova.lesson2.Supplemental.IFoodCooking;
 
 public class Toaster extends Equipment implements IFoodCooking {
 
-    public Toaster(long power, boolean isTurnedOn, String place) {
-        super(power, isTurnedOn, place);
+
+    public Toaster(String place) {
+        super(place);
     }
 
     @Override
     public boolean checkForFood() {
         return false;
-    }
-
-    @Override
-    public void setTemperature(int degree) {
-
     }
 
     @Override

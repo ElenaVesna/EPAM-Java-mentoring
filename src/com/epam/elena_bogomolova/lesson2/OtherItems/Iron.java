@@ -1,13 +1,14 @@
-package com.epam.elena_bogomolova.lesson2.CleaningItems;
+package com.epam.elena_bogomolova.lesson2.OtherItems;
 
 import com.epam.elena_bogomolova.lesson2.Supplemental.Equipment;
 import com.epam.elena_bogomolova.lesson2.Supplemental.ICleaningActions;
 
 public class Iron extends Equipment implements ICleaningActions {
 
+    private boolean state;
 
-    public Iron(long power, String place) {
-        super(power, place);
+    public Iron(String place) {
+        super(place);
     }
 
     @Override

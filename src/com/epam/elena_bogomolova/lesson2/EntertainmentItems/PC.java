@@ -3,12 +3,10 @@ package com.epam.elena_bogomolova.lesson2.EntertainmentItems;
 import com.epam.elena_bogomolova.lesson2.Supplemental.Equipment;
 import com.epam.elena_bogomolova.lesson2.Supplemental.*;
 
-
 public class PC extends Equipment implements FunItem, PlannedActions {
 
-
-    public PC(long power, String place) {
-        super(power, place);
+    public PC(String place) {
+        super(place);
     }
 
     @Override

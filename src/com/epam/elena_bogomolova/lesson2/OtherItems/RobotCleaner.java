@@ -1,4 +1,4 @@
-package com.epam.elena_bogomolova.lesson2.CleaningItems;
+package com.epam.elena_bogomolova.lesson2.OtherItems;
 
 import com.epam.elena_bogomolova.lesson2.Supplemental.Equipment;
 import com.epam.elena_bogomolova.lesson2.Supplemental.ICleaningActions;
@@ -6,8 +6,8 @@ import com.epam.elena_bogomolova.lesson2.Supplemental.PlannedActions;
 
 public class RobotCleaner extends Equipment implements PlannedActions, ICleaningActions {
 
-    public RobotCleaner(long power, String place) {
-        super(power, place);
+    public RobotCleaner(String place) {
+        super(place);
         this.power = 200;
         this.place = "room";
     }

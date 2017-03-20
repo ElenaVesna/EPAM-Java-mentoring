@@ -5,8 +5,8 @@ import com.epam.elena_bogomolova.lesson2.Supplemental.FunItem;
 
 public class PlayStation extends Equipment implements FunItem {
 
-    public PlayStation(long power, String place) {
-        super(power, place);
+    public PlayStation(String place) {
+        super(place);
     }
 
     @Override

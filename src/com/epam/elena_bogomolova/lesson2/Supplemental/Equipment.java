@@ -3,35 +3,32 @@ package com.epam.elena_bogomolova.lesson2.Supplemental;
 public abstract class Equipment {
     protected long power;
     protected String place;
-//    protected long weight;
-//    protected boolean stateOn;
+    protected boolean state = false;
 
-    public Equipment(long power, String place) {
+    public Equipment(long power, String place, boolean state) {
         this.power = power;
-//        this.stateOn = stateOn;
+        this.state = state;
         this.place = place;
-//        this.weight = weight;
     }
 
-//    public Equipment (long power, String place, long weight) {
-//        this(power, false, place, weight);
-//    }
+    public long getPower() {
+        return power;
+    }
+
+    public Equipment(String place) {
+        this.place = place;
+    }
 
     public boolean turnOn() {
-        return true;
+        return state = true;
     }
 
     public boolean turnOff() {
-        return false;
+        return state = false;
     }
 
     public void move(String newPlace) {
         place = newPlace;
     }
 
-    public void startSleepMode(int downtime) {
-        if (downtime > 10) {
-            System.out.println("I'm in sleeping mode");
-        }
-    }
 }

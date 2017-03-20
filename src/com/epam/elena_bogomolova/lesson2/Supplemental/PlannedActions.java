@@ -7,4 +7,9 @@ public interface PlannedActions {
     void startSleepMode();
     void stopSleepMode();
 
+    static void startSleepMode(int downtime) {
+        if (downtime > 10) {
+            System.out.println("I'm in sleeping mode");
+        }
+    }
 }

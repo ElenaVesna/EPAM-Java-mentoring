@@ -1,8 +1,13 @@
 package com.epam.elena_bogomolova.lesson2.KitchenItems;
 
+import com.epam.elena_bogomolova.lesson2.Supplemental.Equipment;
 import com.epam.elena_bogomolova.lesson2.Supplemental.IFoodCooking;
 
-public class Microwave implements IFoodCooking {
+public class Microwave  extends Equipment implements IFoodCooking {
+
+    public Microwave(String place) {
+        super(place);
+    }
 
     @Override
     public boolean checkForFood() {
@@ -10,7 +15,12 @@ public class Microwave implements IFoodCooking {
     }
 
     @Override
-    public void setTemperature(int degree) {
+    public void addFood(int foodWeight) {
+
+    }
+
+    @Override
+    public void removeFood(int foodWeight) {
 
     }
 
@@ -20,7 +30,7 @@ public class Microwave implements IFoodCooking {
     }
 
     @Override
-    public void foodReady() {
-
+    public boolean foodReady() {
+        return false;
     }
 }
