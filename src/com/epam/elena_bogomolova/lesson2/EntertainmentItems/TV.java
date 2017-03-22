@@ -1,9 +1,9 @@
 package com.epam.elena_bogomolova.lesson2.EntertainmentItems;
 
 import com.epam.elena_bogomolova.lesson2.Supplemental.Equipment;
-import com.epam.elena_bogomolova.lesson2.Supplemental.FunItem;
+import com.epam.elena_bogomolova.lesson2.Supplemental.MusicItem;
 
-public class TV extends Equipment implements FunItem {
+public class TV extends Equipment implements MusicItem {
 
 
     public TV(String place) {

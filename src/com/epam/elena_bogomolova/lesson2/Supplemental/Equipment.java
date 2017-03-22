@@ -5,6 +5,10 @@ public abstract class Equipment {
     protected String place;
     protected boolean state = false;
 
+    public boolean getState() {
+        return state;
+    }
+
     public Equipment(long power, String place, boolean state) {
         this.power = power;
         this.state = state;
