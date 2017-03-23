@@ -4,35 +4,32 @@ import com.epam.elena_bogomolova.lesson2.Supplemental.Equipment;
 import com.epam.elena_bogomolova.lesson2.Supplemental.IFoodSaving;
 import com.epam.elena_bogomolova.lesson2.Supplemental.ISetTemperature;
 
-
 public class Fridge extends Equipment implements IFoodSaving, ISetTemperature {
 
-    protected int foodWeight = 0;
-    private int currentTemperature = 20;
-    private long basicPower = 320;
+    private int foodInFridgeWeight = 0;
+    private int fridgeTemperature = 20;
 
     public Fridge(String place) {
         super(place);
-//        this.place = "kitchen";
-        this.power = basicPower;
+        this.idlePower = 320;
+        this.name = "NewFridge";
     }
 
     @Override
     public boolean checkForFood() {
-        if (foodWeight == 0) {
-            return false;
-        } else return true;
+        return foodInFridgeWeight > 0;
     }
 
     @Override
-    public void addFood(int weight) {
-        foodWeight += weight;
+    public void addFood(int foodWeight) {
+        foodInFridgeWeight += foodWeight;
+        System.out.println("now there are " + foodInFridgeWeight + " g of food in the fridge");
     }
 
     @Override
     public void removeFood(int weight) {
-        if (weight <= foodWeight) {
-            foodWeight -= weight;
+        if (weight <= foodInFridgeWeight) {
+            foodInFridgeWeight -= weight;
         } else System.out.println("cannot remove move food then exists");
     }
 
@@ -40,22 +37,25 @@ public class Fridge extends Equipment implements IFoodSaving, ISetTemperature {
     public void startFreezing(int temperature) {
         System.out.println("freezing started");
         long freezingPower = 0;
-        while (temperature < currentTemperature) {
-            currentTemperature -= 1;
+        while (temperature < fridgeTemperature) {
+            fridgeTemperature -= 1;
             freezingPower += 10;
         }
-        this.power = basicPower + freezingPower;
+        power = idlePower + freezingPower;
     }
 
     @Override
     public boolean foodFrozen(int temperature) {
-        if (currentTemperature <= temperature) {
+        if (fridgeTemperature <= temperature) {
+            power = idlePower;
             return true;
         } else return false;
     }
 
     @Override
-    public void setTemperature(int degree, int timeToReachTemperature) {
-
+    public void setTemperature(int degree) {
+        if (fridgeTemperature > degree) {
+            startFreezing(degree);
+        } else System.out.println("Current fridge temperature is " + degree + " degrees");
     }
 }

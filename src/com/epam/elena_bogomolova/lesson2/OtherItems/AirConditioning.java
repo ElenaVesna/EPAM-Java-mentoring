@@ -1,21 +1,28 @@
 package com.epam.elena_bogomolova.lesson2.OtherItems;
 
-
 import com.epam.elena_bogomolova.lesson2.Supplemental.Equipment;
 import com.epam.elena_bogomolova.lesson2.Supplemental.ISetTemperature;
 
 public class AirConditioning extends Equipment implements ISetTemperature {
 
-    public AirConditioning(String place) {
-        super(place);
-        this.place = "room";
+    private int roomTemperature = 18;
+
+    public AirConditioning(String place, String name) {
+        super(place, name);
+        this.idlePower = 17;
     }
 
     @Override
-    public void setTemperature(int degree, int timeToReachTemperature) {
-        if (timeToReachTemperature < 10) {
-            this.power = 400;
-        } else this.power = 350;
-        System.out.println("Now room temperature is " + degree + "degree(s)");
+    public void setTemperature(int degree) {
+        int temperatureGap = roomTemperature - degree;
+        if (temperatureGap < 0) {
+            System.out.println("You should use heater to increase room temperature");
+        } else if (temperatureGap < 5) {
+            power = idlePower*2;
+            roomTemperature = degree;
+        } else if (temperatureGap < 15) {
+            power = idlePower*3;
+            roomTemperature = degree;
+        } else System.out.println("You'd better move to the North Pole! :)");
     }
 }
