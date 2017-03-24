@@ -6,28 +6,27 @@ public abstract class Equipment {
     protected long idlePower;
 
     protected long power = 0;
-    protected String place;
+
+    protected String place;  //{kitchen, room, bedroom, laundry};
     protected String name;
     protected boolean state = false; // общее состояние устройства: false = turned off, true = turned on
     protected boolean idle = true; // выполение полезной работы: true = включен в сеть, ничего не делает, false = выполняется полезную работу
 
 
-    public Equipment(long idlePower, String place, boolean idle) {
+    public Equipment(long idlePower, String place, String name) {
         this.idlePower = idlePower;
-        this.idle = idle;
+        this.name = name;
         this.place = place;
     }
 
-    public Equipment(long idlePower, String place, String name) {
-        this.place = place;
-        this.idlePower = idlePower;
+    public Equipment(long power, String name) {
+        this.power = power;
         this.name = name;
     }
 
     public Equipment(String place, String name) {
-        this.place = place;
         this.name = name;
-
+        this.place = place;
     }
 
     public Equipment(String place) {
@@ -45,7 +44,7 @@ public abstract class Equipment {
         }
     }
 
-    public void turnOff() {
+    protected void turnOff() {
         if (idle) {
             state = false;
             power = 0;

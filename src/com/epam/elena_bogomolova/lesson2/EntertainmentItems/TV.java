@@ -13,6 +13,7 @@ public class TV extends Equipment implements VideoItem, PlannedActions {
     @Override
     public void playVideo() {
         power = idlePower + 25;
+        System.out.println("1st channel shows 'Frozen' now. Enjoy!");
     }
 
     @Override

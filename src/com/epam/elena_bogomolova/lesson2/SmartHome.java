@@ -15,68 +15,64 @@ import com.epam.elena_bogomolova.lesson2.Supplemental.Equipment;
 import com.epam.elena_bogomolova.lesson2.Supplemental.IFoodActions;
 import com.epam.elena_bogomolova.lesson2.Supplemental.VideoItem;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+
+import static java.util.Collections.*;
 
 public class SmartHome {
 
     public static void main(String[] args) {
 
-        Equipment[] smartHouse = new Equipment[11];
+        List<Equipment> smartHouse = new ArrayList<>();
 
-        smartHouse[0] = new Fridge("kitchen");
-        smartHouse[1] = new PC("room", "SuperPC");
-        smartHouse[2] = new PlayStation("room", "PS4");
-        smartHouse[3] = new Radio("bedroom");
-        smartHouse[4] = new TV(15, "room", "SmartTV");
-        smartHouse[5] = new BreadMaker("kitchen");
-        smartHouse[6] = new Microwave("kitchen");
-        smartHouse[7] = new Toaster("kitchen");
-        smartHouse[8] = new AirConditioning("bedroom", "Bedroom Cooler");
-        smartHouse[9] = new Iron("laundry");
-        smartHouse[10] = new RobotCleaner("laundry");
+        smartHouse.add(new Fridge("kitchen"));
+        smartHouse.add(new PC("room", "SuperPC"));
+        smartHouse.add(new PlayStation("room", "PS4"));
+        smartHouse.add(new Radio("bedroom"));
+        smartHouse.add(new TV(15, "room", "SmartTV"));
+        smartHouse.add(new BreadMaker("kitchen"));
+        smartHouse.add(new Microwave("kitchen"));
+        smartHouse.add(new Toaster("kitchen"));
+        smartHouse.add(new AirConditioning("bedroom", "Bedroom Cooler"));
+        smartHouse.add(new Iron("laundry"));
+        smartHouse.add(new RobotCleaner("laundry"));
 
         System.out.println("Hi, Smart House! I bought a lot food and I want to save and cook them");
         long currentPower = 0;
-        for (Equipment equipment : smartHouse) {
-            if (equipment instanceof IFoodActions) {
-                equipment.turnOn();
-                currentPower += equipment.getPower();
-                System.out.println(equipment.getName() + " is turned on, it's current power is " + equipment.getPower());
+        for (Equipment eq : smartHouse) {
+            if (eq instanceof IFoodActions) {
+                eq.turnOn();
+                currentPower += eq.getPower();
+                System.out.println(eq.getName() + " is turned on, it's current power is " + eq.getPower());
             }
         }
         System.out.println("The current sum power is " + currentPower + " W");
         System.out.println();
 
         System.out.println("Hm... too much power, it's so expensive! Sort all my items based on their idle power!");
-        List<Long> powersList = new ArrayList<>();
-        for (Equipment equipment : smartHouse) {
-            powersList.add(equipment.getIdlePower());
-        }
 
-//        Arrays.sort(smartHouse);
-//        for (Equipment equipment : smartHouse) {
-//            System.out.println(equipment.getIdlePower() + " W has " + equipment.getName());
-//            }
-//        }
-
-
-        Collections.sort(powersList);
-        for (Long powers : powersList) {
-            for (Equipment equipment : smartHouse) {
-                long eqPower = equipment.getIdlePower();
-                if (eqPower == powers) {
-                    System.out.println(powers + " W has " + equipment.getName());
-                }
+        class PlaceComparator implements Comparator<Equipment> {
+            @Override
+            public int compare (Equipment e1, Equipment e2) {
+                return e1.getIdlePower() < e2.getIdlePower() ? -1 : e1.getIdlePower() == e2.getIdlePower() ? 0 : 1;
             }
         }
 
+        sort(smartHouse, new  PlaceComparator());
+        for (Equipment sh : smartHouse) {
+            System.out.println(sh.getIdlePower() + " W for " + sh.getName());
+        }
         System.out.println();
 
         System.out.println("Ok, let's bake some bread");
-        ((BreadMaker) smartHouse[5]).addFood(300);
-        ((BreadMaker) smartHouse[5]).startCooking();
+
+        for (Equipment eq : smartHouse) {
+            if (eq instanceof BreadMaker) {
+                ((BreadMaker) eq).addFood(300);
+                ((BreadMaker) eq).startCooking();
+                ((BreadMaker) eq).foodReady();
+            }
+        }
 
         System.out.println();
         System.out.println("I get so bored... I want to watch some video. Remind me, what media devices do I have?");
@@ -87,8 +83,23 @@ public class SmartHome {
             }
         }
         System.out.println("\n");
+
+        System.out.println("OK, I wanna watch TV");
+        for (Equipment eq : smartHouse) {
+            if (eq instanceof TV) {
+                 eq.turnOn();
+                ((TV) eq).playVideo();
+            }
+        }
+        System.out.println();
+
         System.out.println("Please find working devices witch power is less then 50 W now");
 
+        for (Equipment eq : smartHouse) {
+            if (eq.getPower() < 50 && eq.isTurnedOn()) {
+                System.out.println(eq.getName() + " now uses power " + eq.getPower() + " W (less then 50 W)");
+            }
+        }
 
     }
 }
