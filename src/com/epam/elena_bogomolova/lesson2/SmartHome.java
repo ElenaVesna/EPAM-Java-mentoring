@@ -13,6 +13,7 @@ import com.epam.elena_bogomolova.lesson2.OtherItems.Iron;
 import com.epam.elena_bogomolova.lesson2.OtherItems.RobotCleaner;
 import com.epam.elena_bogomolova.lesson2.Supplemental.Equipment;
 import com.epam.elena_bogomolova.lesson2.Supplemental.IFoodActions;
+import com.epam.elena_bogomolova.lesson2.Supplemental.Places;
 import com.epam.elena_bogomolova.lesson2.Supplemental.VideoItem;
 
 import java.util.*;
@@ -25,17 +26,17 @@ public class SmartHome {
 
         List<Equipment> smartHouse = new ArrayList<>();
 
-        smartHouse.add(new Fridge("kitchen"));
-        smartHouse.add(new PC("room", "SuperPC"));
-        smartHouse.add(new PlayStation("room", "PS4"));
-        smartHouse.add(new Radio("bedroom"));
-        smartHouse.add(new TV(15, "room", "SmartTV"));
-        smartHouse.add(new BreadMaker("kitchen"));
-        smartHouse.add(new Microwave("kitchen"));
-        smartHouse.add(new Toaster("kitchen"));
-        smartHouse.add(new AirConditioning("bedroom", "Bedroom Cooler"));
-        smartHouse.add(new Iron("laundry"));
-        smartHouse.add(new RobotCleaner("laundry"));
+        smartHouse.add(new Fridge(Places.kitchen));
+        smartHouse.add(new PC(Places.room, "SuperPC"));
+        smartHouse.add(new PlayStation(Places.room, "PS4"));
+        smartHouse.add(new Radio(Places.bedroom));
+        smartHouse.add(new TV(15, Places.room, "SmartTV"));
+        smartHouse.add(new BreadMaker(Places.kitchen));
+        smartHouse.add(new Microwave(Places.kitchen));
+        smartHouse.add(new Toaster(Places.kitchen));
+        smartHouse.add(new AirConditioning(Places.bedroom, "Bedroom_Cooler"));
+        smartHouse.add(new Iron(Places.laundry, 55L));
+        smartHouse.add(new RobotCleaner(Places.laundry));
 
         System.out.println("Hi, Smart House! I bought a lot food and I want to save and cook them");
         long currentPower = 0;
@@ -65,12 +66,19 @@ public class SmartHome {
         System.out.println();
 
         System.out.println("Ok, let's bake some bread");
-
         for (Equipment eq : smartHouse) {
             if (eq instanceof BreadMaker) {
                 ((BreadMaker) eq).addFood(300);
                 ((BreadMaker) eq).startCooking();
                 ((BreadMaker) eq).foodReady();
+            }
+        }
+        System.out.println();
+        System.out.println("And now make a toast");
+        for (Equipment eq : smartHouse) {
+            if (eq instanceof Toaster) {
+                ((Toaster) eq).addFood(50);
+                ((Toaster) eq).startCooking();
             }
         }
 
@@ -94,11 +102,24 @@ public class SmartHome {
         System.out.println();
 
         System.out.println("Please find working devices witch power is less then 50 W now");
-
         for (Equipment eq : smartHouse) {
             if (eq.getPower() < 50 && eq.isTurnedOn()) {
                 System.out.println(eq.getName() + " now uses power " + eq.getPower() + " W (less then 50 W)");
             }
+        }
+        System.out.println();
+
+        System.out.println("Please find all working kitchen devices");
+        System.out.println("Now working device(s) is(are)");
+        int notIdle = 0;
+        for (Equipment eq : smartHouse) {
+            if (eq.getPlace().equals(Places.kitchen) && !eq.isIdle()) {
+                notIdle ++;
+                System.out.println(eq.getName());
+            }
+        }
+        if (notIdle == 0) {
+            System.out.println("There are no working kitchen devices now");
         }
 
     }

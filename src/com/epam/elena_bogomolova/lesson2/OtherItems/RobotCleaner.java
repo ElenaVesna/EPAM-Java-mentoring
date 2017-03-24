@@ -1,11 +1,12 @@
 package com.epam.elena_bogomolova.lesson2.OtherItems;
 
 import com.epam.elena_bogomolova.lesson2.Supplemental.Equipment;
+import com.epam.elena_bogomolova.lesson2.Supplemental.Places;
 import com.epam.elena_bogomolova.lesson2.Supplemental.PlannedActions;
 
 public class RobotCleaner extends Equipment implements PlannedActions {
 
-    public RobotCleaner(String place) {
+    public RobotCleaner(Places place) {
         super(place);
         this.idlePower = 10;
         this.name = "Robot Cleaner";

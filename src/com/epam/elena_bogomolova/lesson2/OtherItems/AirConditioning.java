@@ -2,14 +2,14 @@ package com.epam.elena_bogomolova.lesson2.OtherItems;
 
 import com.epam.elena_bogomolova.lesson2.Supplemental.Equipment;
 import com.epam.elena_bogomolova.lesson2.Supplemental.ISetTemperature;
+import com.epam.elena_bogomolova.lesson2.Supplemental.Places;
 
 public class AirConditioning extends Equipment implements ISetTemperature {
 
     private int roomTemperature = 18;
 
-    public AirConditioning(String place, String name) {
-        super(place, name);
-        this.idlePower = 17;
+    public AirConditioning(Places place, String name) {
+        super(17, place, name);
     }
 
     @Override

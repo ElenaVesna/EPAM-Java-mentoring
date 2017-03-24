@@ -2,15 +2,14 @@ package com.epam.elena_bogomolova.lesson2.KitchenItems;
 
 import com.epam.elena_bogomolova.lesson2.Supplemental.Equipment;
 import com.epam.elena_bogomolova.lesson2.Supplemental.IFoodCooking;
+import com.epam.elena_bogomolova.lesson2.Supplemental.Places;
 
 public class BreadMaker extends Equipment implements IFoodCooking {
 
     private int foodInAmount = 0;
 
-    public BreadMaker(String place) {
-        super(place);
-        this.idlePower = 20;
-        this.name = "HomeBaker";
+    public BreadMaker(Places place) {
+        super(20, place, "HomeBaker");
     }
 
     @Override
@@ -45,6 +44,7 @@ public class BreadMaker extends Equipment implements IFoodCooking {
         if (checkForFood()) {
             power = idlePower + 45;
             System.out.println("Bread making started");
+            idle = false;
         } else System.out.println("Something went wrong, check for food");
     }
 
@@ -52,6 +52,7 @@ public class BreadMaker extends Equipment implements IFoodCooking {
     public boolean foodReady() {
         System.out.println("Your cake is baked, enjoy!");
         power = idlePower;
+        idle = true;
         return true;
     }
 }

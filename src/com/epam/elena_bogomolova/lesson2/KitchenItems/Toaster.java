@@ -2,6 +2,7 @@ package com.epam.elena_bogomolova.lesson2.KitchenItems;
 
 import com.epam.elena_bogomolova.lesson2.Supplemental.Equipment;
 import com.epam.elena_bogomolova.lesson2.Supplemental.IFoodCooking;
+import com.epam.elena_bogomolova.lesson2.Supplemental.Places;
 
 import java.util.Scanner;
 
@@ -10,10 +11,8 @@ public class Toaster extends Equipment implements IFoodCooking {
     private boolean isFoodIn = false;
     private int breadWeigh = 0;
 
-    public Toaster(String place) {
-        super(place);
-        this.idlePower = 5;
-        this.name = "Figure Toaster";
+    public Toaster(Places place) {
+        super(5, place, "Figure_Toaster");
     }
 
     @Override
@@ -45,12 +44,14 @@ public class Toaster extends Equipment implements IFoodCooking {
     @Override
     public void startCooking() {
         power = idlePower + 60;
+        idle = false;
     }
 
     @Override
     public boolean foodReady() {
         System.out.println("Now you can enjoy your toast");
         power = idlePower;
+        idle = true;
         return true;
     }
 }

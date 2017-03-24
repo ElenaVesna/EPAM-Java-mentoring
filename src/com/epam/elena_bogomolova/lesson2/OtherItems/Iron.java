@@ -1,13 +1,12 @@
 package com.epam.elena_bogomolova.lesson2.OtherItems;
 
 import com.epam.elena_bogomolova.lesson2.Supplemental.Equipment;
+import com.epam.elena_bogomolova.lesson2.Supplemental.Places;
 
 public class Iron extends Equipment {
 
-    public Iron(String place) {
-        super(place);
-        this.idlePower = power;
-        this.name = "Vapor Iron";
+    public Iron(Places place, Long power) {
+        super(power, place, "Vapor Iron");
     }
 
     public void startIroning(int ironingTemperature) {

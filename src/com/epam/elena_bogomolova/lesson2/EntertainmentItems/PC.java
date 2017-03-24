@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class PC extends Equipment implements MusicItem, VideoItem, GameItem, PlannedActions {
 
 
-    public PC(String place, String name) {
+    public PC(Places place, String name) {
         super(17, place, name);
     }
 
@@ -20,18 +20,21 @@ public class PC extends Equipment implements MusicItem, VideoItem, GameItem, Pla
         String album = sc.nextLine();
         System.out.println(album + " album started to play. Enjoy!");
         power = power + 15;
+        idle = false;
     }
 
     @Override
     public void stopPlayingMusic() {
         System.out.println("music playing stopped");
         power = power - 15;
+        idle = true;
     }
 
     @Override
     public void planStart(long startTime) {
         if (startTime >= System.currentTimeMillis()) {
             power = idlePower;
+            idle = false;
         }
     }
 
@@ -40,6 +43,7 @@ public class PC extends Equipment implements MusicItem, VideoItem, GameItem, Pla
         if (stopTime >= System.currentTimeMillis()) {
             power = 0;
             System.out.println("PC is turning off. Goodbye!");
+            state = false;
         }
     }
 
@@ -62,11 +66,13 @@ public class PC extends Equipment implements MusicItem, VideoItem, GameItem, Pla
     public void playGames() {
         System.out.println("PC started playing Solitaire");
         power = idlePower + 30;
+        idle = false;
     }
 
     @Override
     public void playVideo() {
         System.out.println("PC started playing 'Arrival' movie");
         power = idlePower*2;
+        idle = false;
     }
 }

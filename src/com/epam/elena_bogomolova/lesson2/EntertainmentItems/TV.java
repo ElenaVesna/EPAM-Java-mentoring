@@ -1,18 +1,20 @@
 package com.epam.elena_bogomolova.lesson2.EntertainmentItems;
 
 import com.epam.elena_bogomolova.lesson2.Supplemental.Equipment;
+import com.epam.elena_bogomolova.lesson2.Supplemental.Places;
 import com.epam.elena_bogomolova.lesson2.Supplemental.PlannedActions;
 import com.epam.elena_bogomolova.lesson2.Supplemental.VideoItem;
 
 public class TV extends Equipment implements VideoItem, PlannedActions {
 
-    public TV(long idlePower, String place, String name) {
+    public TV(long idlePower, Places place, String name) {
         super(idlePower, place, name);
     }
 
     @Override
     public void playVideo() {
         power = idlePower + 25;
+        idle = false;
         System.out.println("1st channel shows 'Frozen' now. Enjoy!");
     }
 

@@ -7,29 +7,20 @@ public abstract class Equipment {
 
     protected long power = 0;
 
-    protected String place;  //{kitchen, room, bedroom, laundry};
+//    public enum Place {kitchen, room, bedroom, laundry};
+    protected Places place;
     protected String name;
     protected boolean state = false; // общее состояние устройства: false = turned off, true = turned on
     protected boolean idle = true; // выполение полезной работы: true = включен в сеть, ничего не делает, false = выполняется полезную работу
 
 
-    public Equipment(long idlePower, String place, String name) {
+    public Equipment(long idlePower, Places place, String name) {
         this.idlePower = idlePower;
         this.name = name;
         this.place = place;
     }
 
-    public Equipment(long power, String name) {
-        this.power = power;
-        this.name = name;
-    }
-
-    public Equipment(String place, String name) {
-        this.name = name;
-        this.place = place;
-    }
-
-    public Equipment(String place) {
+    public Equipment(Places place) {
         this.place = place;
     }
 
@@ -37,6 +28,7 @@ public abstract class Equipment {
         if (!state) {
             state = true;
             power = idlePower;
+            idle = true;
             return true;
         } else {
             System.out.println("item is already turned on");
@@ -59,8 +51,9 @@ public abstract class Equipment {
         }
     }
 
-    public void move(String newPlace) {
-        System.out.println("equipment was successfully moved from " + place + " to " + newPlace);
+    public void move(Places newPlace) {
+        Places currentPlace = place;
+        System.out.println("equipment was successfully moved from " + currentPlace + " to " + newPlace);
         place = newPlace;
     }
 
@@ -68,7 +61,7 @@ public abstract class Equipment {
         return state;
     }
 
-    public String getPlace() {
+    public Places getPlace() {
         return place;
     }
 

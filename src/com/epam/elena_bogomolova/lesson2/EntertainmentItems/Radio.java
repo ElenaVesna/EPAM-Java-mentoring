@@ -1,12 +1,12 @@
 package com.epam.elena_bogomolova.lesson2.EntertainmentItems;
 
 import com.epam.elena_bogomolova.lesson2.Supplemental.Equipment;
+import com.epam.elena_bogomolova.lesson2.Supplemental.Places;
 
 public class Radio extends Equipment {
 
-    public Radio(String place) {
-        super(place);
-        this.idlePower = 5;
-        this.name = "JustRadio";
+    public Radio(Places place) {
+        super(5, place, "JustRadio");
+        this.power = idlePower;
     }
 }

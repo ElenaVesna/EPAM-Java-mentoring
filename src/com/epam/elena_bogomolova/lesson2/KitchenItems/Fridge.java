@@ -3,16 +3,15 @@ package com.epam.elena_bogomolova.lesson2.KitchenItems;
 import com.epam.elena_bogomolova.lesson2.Supplemental.Equipment;
 import com.epam.elena_bogomolova.lesson2.Supplemental.IFoodSaving;
 import com.epam.elena_bogomolova.lesson2.Supplemental.ISetTemperature;
+import com.epam.elena_bogomolova.lesson2.Supplemental.Places;
 
 public class Fridge extends Equipment implements IFoodSaving, ISetTemperature {
 
     private int foodInFridgeWeight = 0;
     private int fridgeTemperature = 20;
 
-    public Fridge(String place) {
-        super(place);
-        this.idlePower = 320;
-        this.name = "NewFridge";
+    public Fridge(Places place) {
+        super(320, place, "NewFridge");
     }
 
     @Override
@@ -42,12 +41,14 @@ public class Fridge extends Equipment implements IFoodSaving, ISetTemperature {
             freezingPower += 10;
         }
         power = idlePower + freezingPower;
+        idle = false;
     }
 
     @Override
     public boolean foodFrozen(int temperature) {
         if (fridgeTemperature <= temperature) {
             power = idlePower;
+            idle = true;
             return true;
         } else return false;
     }
