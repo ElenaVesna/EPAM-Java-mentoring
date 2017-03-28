@@ -12,15 +12,16 @@ public class DynamicArray<E> {
         for (int i = 0; i < initArraySize; i++) {
             dynArray.add("Element-" + i);
         }
-        System.out.println("Initial array size: " + dynArray.size() + "\n");
+        System.out.printf("Initial array size: %d \n", dynArray.size());
         dynArray.remove(numToDel);
-        System.out.println("Elements after deletion of the " + numToDel + "th element:");
+        System.out.printf("Elements after deletion of the %d-th element: \n", numToDel);
         for (int i = 0; i < dynArray.size(); i++) {
             System.out.println(dynArray.get(i));
         }
-        dynArray.elemToString(4);
+        dynArray.elemToString();
 
-        System.out.println("\n" + dynArray.get(6));
+        System.out.println();
+        System.out.println(dynArray.get(6));
 
     }
 
@@ -50,10 +51,12 @@ public class DynamicArray<E> {
         arraySize++;
     }
 
-    public void elemToString(int i) {
+    public void elemToString() {
+        System.out.printf("\nNow array contains of %d elements \n", size());
     }
 
     public E get(int i) {
+        System.out.printf("The %d-th element: ", i);
         return (E) data[i];
     }
 }
