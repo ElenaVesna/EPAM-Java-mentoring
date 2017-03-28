@@ -18,7 +18,7 @@ public class DynamicArray<E> {
         for (int i = 0; i < dynArray.size(); i++) {
             System.out.println(dynArray.get(i));
         }
-        dynArray.elemToString();
+        System.out.println(dynArray.toString());
 
         System.out.println();
         System.out.println(dynArray.get(6));
@@ -51,8 +51,26 @@ public class DynamicArray<E> {
         arraySize++;
     }
 
-    public void elemToString() {
-        System.out.printf("\nNow array contains of %d elements \n", size());
+//    public void elemToString() {
+//        System.out.printf("\nNow array contains %d elements \n", size());
+//        StringBuilder sb = new StringBuilder();
+//        for (int i = 0; i < arraySize - 1; i++) {
+//            sb.append(data[i] + "\n");
+//        }
+//        sb.append(data[arraySize - 1]);
+//        System.out.printf(sb.toString());
+//    }
+
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("\nNow array contains %d elements: \n", size()));
+        for (int i = 0; i < arraySize - 1; i++) {
+            sb.append(data[i] + "\n");
+        }
+        sb.append(data[arraySize - 1]);
+
+        return sb.toString();
     }
 
     public E get(int i) {
