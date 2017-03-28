@@ -44,11 +44,12 @@ public class SmartHome {
             if (eq instanceof IFoodActions) {
                 eq.turnOn();
                 currentPower += eq.getPower();
-                System.out.println(eq.getName() + " is turned on, it's current power is " + eq.getPower());
+                String s = String.format("%1$s is turned on, it's current power is %2$o", eq.getName(), eq.getPower());
+                System.out.println(s);
             }
         }
-        System.out.println("The current sum power is " + currentPower + " W");
-        System.out.println();
+        System.out.printf("The current sum power is %o W", currentPower);
+        System.out.println("\n");
 
         System.out.println("Hm... too much power, it's so expensive! Sort all my items based on their idle power!");
 
@@ -61,7 +62,7 @@ public class SmartHome {
 
         sort(smartHouse, new  PlaceComparator());
         for (Equipment sh : smartHouse) {
-            System.out.println(sh.getIdlePower() + " W for " + sh.getName());
+            System.out.printf("%1$o W for %2$s \n", sh.getIdlePower(), sh.getName());
         }
         System.out.println();
 
@@ -87,7 +88,7 @@ public class SmartHome {
         System.out.println("You have the following Video devices:");
         for (Equipment equipment : smartHouse) {
             if (equipment instanceof VideoItem) {
-                System.out.print(equipment.getName() + ", ");
+                System.out.println(equipment.getName());
             }
         }
         System.out.println("\n");
@@ -95,7 +96,7 @@ public class SmartHome {
         System.out.println("OK, I wanna watch TV");
         for (Equipment eq : smartHouse) {
             if (eq instanceof TV) {
-                 eq.turnOn();
+                eq.turnOn();
                 ((TV) eq).playVideo();
             }
         }
@@ -104,7 +105,8 @@ public class SmartHome {
         System.out.println("Please find working devices witch power is less then 50 W now");
         for (Equipment eq : smartHouse) {
             if (eq.getPower() < 50 && eq.isTurnedOn()) {
-                System.out.println(eq.getName() + " now uses power " + eq.getPower() + " W (less then 50 W)");
+                String d = String.format("%1$s now uses power %2$o W (less then 50 W)", eq.getName(), eq.getPower());
+                System.out.println(d);
             }
         }
         System.out.println();
