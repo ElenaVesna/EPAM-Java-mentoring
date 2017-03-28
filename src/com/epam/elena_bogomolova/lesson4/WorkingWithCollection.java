@@ -26,10 +26,10 @@ public class WorkingWithCollection {
     }
 
     private static int findSecondSmallElem(ArrayList<Integer> array) {
-        int smallest = findMinElementId(array);
-        int elNSmall = array.get(smallest);
+            int smallest = findMinElementId(array);
+        int elNSmall = (smallest == 0) ? array.get(1) : array.get(0);
         for (int i = 0; i < array.size(); i++) {
-                if (array.get(i) < smallest && !array.get(i).equals(elNSmall)) {
+                if (array.get(i) < elNSmall && array.get(i)!= array.get(smallest)) {
                     elNSmall = array.get(i);
                 }
 
