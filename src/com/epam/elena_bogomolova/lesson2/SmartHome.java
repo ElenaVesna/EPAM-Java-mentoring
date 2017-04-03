@@ -22,6 +22,9 @@ import static java.util.Collections.*;
 
 public class SmartHome {
 
+    public static final String DEVICES_OF_TYPE = "You have the following devices for ";
+    public static final String INITIALIZE = "Hi, Smart House!";
+
     public static void main(String[] args) {
 
         List<Equipment> smartHouse = new ArrayList<>();
@@ -38,7 +41,7 @@ public class SmartHome {
         smartHouse.add(new Iron(Places.laundry, 55L));
         smartHouse.add(new RobotCleaner(Places.laundry));
 
-        System.out.println("Hi, Smart House! I bought a lot food and I want to save and cook them");
+        System.out.println(INITIALIZE + " I bought a lot food and I want to save and cook them");
         long currentPower = 0;
         for (Equipment eq : smartHouse) {
             if (eq instanceof IFoodActions) {
@@ -85,7 +88,7 @@ public class SmartHome {
 
         System.out.println();
         System.out.println("I get so bored... I want to watch some video. Remind me, what media devices do I have?");
-        System.out.println("You have the following Video devices:");
+        System.out.println(DEVICES_OF_TYPE + "Video:");
         for (Equipment equipment : smartHouse) {
             if (equipment instanceof VideoItem) {
                 System.out.println(equipment.getName());
