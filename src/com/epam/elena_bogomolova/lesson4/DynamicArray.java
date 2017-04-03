@@ -22,7 +22,6 @@ public class DynamicArray<E> {
 
         System.out.println();
         System.out.println(dynArray.get(6));
-
     }
 
     public int size() {
