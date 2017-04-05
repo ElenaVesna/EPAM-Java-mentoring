@@ -4,6 +4,7 @@ import com.epam.elena_bogomolova.lesson3.Supplemental.Equipment;
 import com.epam.elena_bogomolova.lesson3.Supplemental.Places;
 import com.epam.elena_bogomolova.lesson3.Supplemental.PlannedActions;
 import com.epam.elena_bogomolova.lesson3.Supplemental.VideoItem;
+import com.epam.elena_bogomolova.lesson3.WarningException;
 
 public class TV extends Equipment implements VideoItem, PlannedActions {
 
@@ -26,7 +27,7 @@ public class TV extends Equipment implements VideoItem, PlannedActions {
     }
 
     @Override
-    public void planStop(long stopTime) {
+    public void planStop(long stopTime) throws WarningException {
         if (stopTime >= System.currentTimeMillis()) {
             System.out.println("TV is turning off. Goodbye!");
             turnOff();

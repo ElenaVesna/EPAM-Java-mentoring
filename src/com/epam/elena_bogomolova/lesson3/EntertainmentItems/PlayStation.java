@@ -19,14 +19,15 @@ public class PlayStation extends Equipment implements VideoItem, GameItem {
         System.out.println("(hint: input game name)");
         Scanner sc = new Scanner(System.in);
         String game = sc.nextLine();
-        System.out.println("Game " + game + "started! Enjoy!");
+        System.out.printf("Game %s started! Enjoy! \n", game);
         power = idlePower*3;
         idle = false;
     }
 
     @Override
     public void playVideo() {
-        System.out.println("Play station starts to play games Demo video for you");
+        System.out.println("Playstation starts to play games Demo video for you");
+
         power = idlePower + 35;
         idle = false;
     }

@@ -1,9 +1,6 @@
 package com.epam.elena_bogomolova.lesson3.KitchenItems;
 
-import com.epam.elena_bogomolova.lesson3.Supplemental.Equipment;
-import com.epam.elena_bogomolova.lesson3.Supplemental.IFoodSaving;
-import com.epam.elena_bogomolova.lesson3.Supplemental.ISetTemperature;
-import com.epam.elena_bogomolova.lesson3.Supplemental.Places;
+import com.epam.elena_bogomolova.lesson3.Supplemental.*;
 
 public class Fridge extends Equipment implements IFoodSaving, ISetTemperature {
 
