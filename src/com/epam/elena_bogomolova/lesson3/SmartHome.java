@@ -16,7 +16,6 @@ import com.epam.elena_bogomolova.lesson3.Supplemental.MusicItem;
 import com.epam.elena_bogomolova.lesson3.Supplemental.Places;
 import com.epam.elena_bogomolova.lesson3.Supplemental.Units;
 
-
 public class SmartHome {
 
     private static final String INITIALIZATION = "Hi, Smart House!";
