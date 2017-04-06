@@ -29,7 +29,7 @@ public class SmartHome {
         System.out.println("I bought a new Playstation!");
         Equipment PS = createUnit(Units.Playstation, Places.room);
 //        get TurnOff exception
-        System.out.println("\n Turn PS off");
+        System.out.println("\n Turn PS off!");
         turnOffUnit(PS);
 
 //        try to create unit with no implemented class - catch NullPointerException
@@ -49,6 +49,17 @@ public class SmartHome {
         } catch (WarningException e) {
             System.out.println("---Error: incorrect album number chosen");
         }
+
+//        create new Toaster equipment
+        System.out.println("\nMy friend gave me a new toaster as a present!");
+        Equipment tastyToaster = createUnit(Units.Toaster, Places.kitchen);
+        tastyToaster.turnOn();
+        try {
+            ((Toaster)tastyToaster).makingToast();
+        } catch (WarningException|ErrorException e) {
+            System.out.println("Cannot make a toast, incorrect amount of bread added");
+        }
+
     }
 
     private static void turnOffUnit(Equipment eq) throws WarningException {
@@ -111,22 +122,4 @@ public class SmartHome {
 //        return smartHouse;
 //    }
 
-
-//        for (Equipment eq : smartHouse) {
-//            if (eq instanceof IFoodActions) {
-//                eq.turnOn();
-//                String s = String.format("%1$s is turned on, it's current power is %2$o", eq.getName(), eq.getPower());
-//                System.out.println(s);
-//            }
-//        }
-//
-//        System.out.println("Ok, let's bake some bread");
-//        for (Equipment eq : smartHouse) {
-//            if (eq instanceof BreadMaker) {
-//                ((BreadMaker) eq).addFood(300);
-//                ((BreadMaker) eq).startCooking();
-//                ((BreadMaker) eq).foodReady();
-//            }
-//        }
-//
 }

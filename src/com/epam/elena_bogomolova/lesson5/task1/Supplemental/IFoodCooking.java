@@ -1,4 +1,4 @@
-package com.epam.elena_bogomolova.lesson3.Supplemental;
+package com.epam.elena_bogomolova.lesson5.task1.Supplemental;
 
 import com.epam.elena_bogomolova.lesson3.WarningException;
 

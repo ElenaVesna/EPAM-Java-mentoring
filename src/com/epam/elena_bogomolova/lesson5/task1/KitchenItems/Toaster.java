@@ -1,10 +1,10 @@
-package com.epam.elena_bogomolova.lesson3.KitchenItems;
+package com.epam.elena_bogomolova.lesson5.task1.KitchenItems;
 
 import com.epam.elena_bogomolova.lesson3.ErrorException;
-import com.epam.elena_bogomolova.lesson3.Supplemental.Equipment;
-import com.epam.elena_bogomolova.lesson3.Supplemental.IFoodCooking;
-import com.epam.elena_bogomolova.lesson3.Supplemental.Places;
 import com.epam.elena_bogomolova.lesson3.WarningException;
+import com.epam.elena_bogomolova.lesson5.task1.Supplemental.Equipment;
+import com.epam.elena_bogomolova.lesson5.task1.Supplemental.IFoodCooking;
+import com.epam.elena_bogomolova.lesson5.task1.Supplemental.Places;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
