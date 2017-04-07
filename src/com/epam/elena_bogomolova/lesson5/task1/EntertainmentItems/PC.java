@@ -1,6 +1,10 @@
 package com.epam.elena_bogomolova.lesson5.task1.EntertainmentItems;
 
-import com.epam.elena_bogomolova.lesson3.WarningException;
+import com.epam.elena_bogomolova.lesson5.task1.Supplemental.Interfaces.GameItem;
+import com.epam.elena_bogomolova.lesson5.task1.Supplemental.Interfaces.MusicItem;
+import com.epam.elena_bogomolova.lesson5.task1.Supplemental.Interfaces.PlannedActions;
+import com.epam.elena_bogomolova.lesson5.task1.Supplemental.Interfaces.VideoItem;
+import com.epam.elena_bogomolova.lesson5.task1.Supplemental.WarningException;
 import com.epam.elena_bogomolova.lesson5.task1.Supplemental.*;
 
 import java.util.Scanner;
@@ -76,5 +80,12 @@ public class PC extends Equipment implements MusicItem, VideoItem, GameItem, Pla
         System.out.println("PC started playing 'Arrival' movie");
         power = idlePower*2;
         idle = false;
+    }
+
+    @Override
+    public void stopVideo() {
+        System.out.println("Video playing stopped");
+        power = idlePower;
+        idle = true;
     }
 }

@@ -1,7 +1,7 @@
 package com.epam.elena_bogomolova.lesson5.task1.OtherItems;
 
 import com.epam.elena_bogomolova.lesson5.task1.Supplemental.Equipment;
-import com.epam.elena_bogomolova.lesson5.task1.Supplemental.ISetTemperature;
+import com.epam.elena_bogomolova.lesson5.task1.Supplemental.Interfaces.ISetTemperature;
 import com.epam.elena_bogomolova.lesson5.task1.Supplemental.Places;
 
 public class AirConditioning extends Equipment implements ISetTemperature {
@@ -9,7 +9,7 @@ public class AirConditioning extends Equipment implements ISetTemperature {
     private int roomTemperature = 18;
 
     public AirConditioning(Places place, String name) {
-        super(17, place, name);
+        super(17, Places.room, name);
     }
 
     @Override

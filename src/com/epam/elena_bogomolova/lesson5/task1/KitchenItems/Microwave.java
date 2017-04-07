@@ -1,10 +1,10 @@
 package com.epam.elena_bogomolova.lesson5.task1.KitchenItems;
 
 import com.epam.elena_bogomolova.lesson5.task1.Supplemental.Equipment;
-import com.epam.elena_bogomolova.lesson5.task1.Supplemental.IFoodCooking;
+import com.epam.elena_bogomolova.lesson5.task1.Supplemental.Interfaces.IFoodCooking;
 import com.epam.elena_bogomolova.lesson5.task1.Supplemental.Places;
 
-public class Microwave  extends Equipment implements IFoodCooking {
+public class Microwave extends Equipment implements IFoodCooking {
 
     private int foodInWeigh = 0;
 

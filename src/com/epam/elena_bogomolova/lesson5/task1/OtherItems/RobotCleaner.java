@@ -2,7 +2,7 @@ package com.epam.elena_bogomolova.lesson5.task1.OtherItems;
 
 import com.epam.elena_bogomolova.lesson5.task1.Supplemental.Equipment;
 import com.epam.elena_bogomolova.lesson5.task1.Supplemental.Places;
-import com.epam.elena_bogomolova.lesson5.task1.Supplemental.PlannedActions;
+import com.epam.elena_bogomolova.lesson5.task1.Supplemental.Interfaces.PlannedActions;
 
 public class RobotCleaner extends Equipment implements PlannedActions {
 

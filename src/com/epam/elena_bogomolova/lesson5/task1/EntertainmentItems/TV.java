@@ -1,15 +1,17 @@
 package com.epam.elena_bogomolova.lesson5.task1.EntertainmentItems;
 
-import com.epam.elena_bogomolova.lesson3.WarningException;
+import com.epam.elena_bogomolova.lesson5.task1.Supplemental.WarningException;
 import com.epam.elena_bogomolova.lesson5.task1.Supplemental.Equipment;
 import com.epam.elena_bogomolova.lesson5.task1.Supplemental.Places;
-import com.epam.elena_bogomolova.lesson5.task1.Supplemental.PlannedActions;
-import com.epam.elena_bogomolova.lesson5.task1.Supplemental.VideoItem;
+import com.epam.elena_bogomolova.lesson5.task1.Supplemental.Interfaces.PlannedActions;
+import com.epam.elena_bogomolova.lesson5.task1.Supplemental.Interfaces.VideoItem;
 
-public class TV extends Equipment implements VideoItem, PlannedActions {
+import java.io.Serializable;
 
-    public TV(long idlePower, Places place, String name) {
-        super(idlePower, place, name);
+public class TV extends Equipment implements VideoItem, PlannedActions, Serializable {
+
+    public TV(String name) {
+        super(15, Places.room, name, true);
     }
 
     @Override
@@ -17,6 +19,13 @@ public class TV extends Equipment implements VideoItem, PlannedActions {
         power = idlePower + 25;
         idle = false;
         System.out.println("1st channel shows 'Frozen' now. Enjoy!");
+    }
+
+    @Override
+    public void stopVideo() {
+        System.out.println("Program translation stopped, TV is in waiting mode now");
+        power = idlePower;
+        idle = true;
     }
 
     @Override

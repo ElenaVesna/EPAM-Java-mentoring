@@ -1,6 +1,6 @@
-package com.epam.elena_bogomolova.lesson5.task1.Supplemental;
+package com.epam.elena_bogomolova.lesson5.task1.Supplemental.Interfaces;
 
-import com.epam.elena_bogomolova.lesson3.WarningException;
+import com.epam.elena_bogomolova.lesson5.task1.Supplemental.WarningException;
 
 public interface PlannedActions {
 

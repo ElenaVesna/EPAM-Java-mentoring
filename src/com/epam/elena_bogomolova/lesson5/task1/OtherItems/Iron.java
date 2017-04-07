@@ -6,7 +6,7 @@ import com.epam.elena_bogomolova.lesson5.task1.Supplemental.Places;
 public class Iron extends Equipment {
 
     public Iron(Places place, Long power) {
-        super(power, place, "Vapor Iron");
+        super(power, Places.laundry,  "Vapor Iron");
     }
 
     public void startIroning(int ironingTemperature) {
@@ -18,4 +18,6 @@ public class Iron extends Equipment {
         } else System.out.println("Ironing temperature is too high!");
 
     }
+
+
 }

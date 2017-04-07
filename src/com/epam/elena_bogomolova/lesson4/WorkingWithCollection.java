@@ -13,14 +13,14 @@ public class WorkingWithCollection {
 
         ArrayList<Integer> array = createRandomizedArray(numOfElements);
         for (Integer anArray1 : array) { System.out.println(anArray1); }
-//        isOrderRandom(array);
-//        areAllElementsUnique(array);
+        isOrderRandom(array);
+        areAllElementsUnique(array);
 
         findSmallestElement(array);
         findSecondSmallElem(array);
 
 //        findSecondSmallElemId(array);
-//        deleteOddElements(array);
+        deleteOddElements(array);
 
 //        deleteElementsOnOddPlaces(array);
     }

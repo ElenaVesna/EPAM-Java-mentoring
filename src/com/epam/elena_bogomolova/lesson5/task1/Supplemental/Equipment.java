@@ -1,11 +1,10 @@
 package com.epam.elena_bogomolova.lesson5.task1.Supplemental;
 
-import com.epam.elena_bogomolova.lesson3.ErrorException;
-import com.epam.elena_bogomolova.lesson3.WarningException;
-
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Scanner;
 
-public abstract class Equipment {
+public abstract class Equipment extends OutputStream {
 
     private static final String AGREE = "Press Y to continue";
     private static final String ALREADY_TRNDON = "Unit is already turned on";
@@ -16,8 +15,7 @@ public abstract class Equipment {
     private static final String ASK_PLACE_INPUT = "Enter new place you want to move to and press Enter";
 
     protected long idlePower;
-
-    protected long power = 0;
+    protected static long power;
 
     protected Places place;
     protected String name;
@@ -33,6 +31,21 @@ public abstract class Equipment {
 
     public Equipment(Places place) {
         this.place = place;
+    }
+
+    public Equipment (long idlePower, Places place, String name, Boolean idle) {
+        this.idlePower = idlePower;
+        this.place = place;
+        this.name = name;
+        this.idle = idle;
+    }
+
+    public Equipment(String name) {
+        this.name = name;
+    }
+
+    public Equipment() {
+
     }
 
     public void turnOn() {
@@ -122,4 +135,9 @@ public abstract class Equipment {
     public boolean getState() {
         return state;
     }
+
+    @Override
+    public void write(int b) throws IOException {
+    }
+
 }

@@ -1,9 +1,11 @@
 package com.epam.elena_bogomolova.lesson5.task1.KitchenItems;
 
 import com.epam.elena_bogomolova.lesson5.task1.Supplemental.Equipment;
-import com.epam.elena_bogomolova.lesson5.task1.Supplemental.IFoodSaving;
-import com.epam.elena_bogomolova.lesson5.task1.Supplemental.ISetTemperature;
+import com.epam.elena_bogomolova.lesson5.task1.Supplemental.Interfaces.IFoodSaving;
+import com.epam.elena_bogomolova.lesson5.task1.Supplemental.Interfaces.ISetTemperature;
 import com.epam.elena_bogomolova.lesson5.task1.Supplemental.Places;
+
+import java.io.IOException;
 
 public class Fridge extends Equipment implements IFoodSaving, ISetTemperature {
 
@@ -11,7 +13,7 @@ public class Fridge extends Equipment implements IFoodSaving, ISetTemperature {
     private int fridgeTemperature = 20;
 
     public Fridge(Places place) {
-        super(320, place, "NewFridge");
+        super(320, place,"NewFridge");
     }
 
     @Override
