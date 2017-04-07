@@ -31,11 +31,10 @@ public class Serialization {
         System.out.println("-------New TV parameters (power, place, state): ");
         System.out.println(myTV.getPower());        System.out.println(myTV.getPlace());        System.out.println(myTV.isIdle());
 //        десериализация
-        System.out.println("------saved TV parameters (power, place, state):");
+//        System.out.println("------saved TV parameters (power, place, state):");
         Equipment tvSavedState = restoreSavedState(myTV);
 
 //        System.out.println(tvSavedState.getPower());        System.out.println(tvSavedState.getPlace());        System.out.println(tvSavedState.isIdle());
-
     }
 
     private static Equipment restoreSavedState(Equipment unit) throws IOException, ClassNotFoundException {

@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class TV extends Equipment implements VideoItem, PlannedActions, Serializable {
 
     public TV(String name) {
-        super(15, Places.room, name, true);
+        super(15, Places.room, name);
     }
 
     @Override

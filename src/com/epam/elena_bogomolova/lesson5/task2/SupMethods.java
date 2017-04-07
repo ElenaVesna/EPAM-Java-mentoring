@@ -34,7 +34,7 @@ class SupMethods {
 
     static File[] getListFilesWithS(File folder) {
        File[] filesWithSInName = folder.listFiles(f -> f.getName().contains("s") && f.isFile());
-        System.out.println("All files with 's' in name:");
+        System.out.println("---All files with 's' in name:");
         try {
             for (File f : filesWithSInName) {
                 System.out.println(f.getName());
