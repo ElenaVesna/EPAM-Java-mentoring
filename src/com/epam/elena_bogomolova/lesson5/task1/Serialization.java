@@ -22,6 +22,7 @@ public class Serialization {
         printCurrentParam(myTV);
 //        сериализация объекта
         saveUnitState(myTV);
+//        изменение состояния объекта
         myTV.move();
         ((VideoItem) myTV).stopVideo();
 //        new param withing the program
