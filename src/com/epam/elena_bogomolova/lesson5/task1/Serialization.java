@@ -19,22 +19,17 @@ public class Serialization {
         ((VideoItem)myTV).playVideo();
 //        current param
         System.out.println("------TV now has the following parameters (power, place, state): ");
-        System.out.println(myTV.getPower());
-        System.out.println(myTV.getPlace());
-        System.out.println(myTV.isIdle());
+        printCurrentParam(myTV);
 //        сериализация объекта
         saveUnitState(myTV);
-        restoreSavedState(myTV);
         myTV.move();
         ((VideoItem) myTV).stopVideo();
 //        new param withing the program
         System.out.println("-------New TV parameters (power, place, state): ");
-        System.out.println(myTV.getPower());        System.out.println(myTV.getPlace());        System.out.println(myTV.isIdle());
+        printCurrentParam(myTV);
 //        десериализация
-//        System.out.println("------saved TV parameters (power, place, state):");
-        Equipment tvSavedState = restoreSavedState(myTV);
+        restoreSavedState(myTV);
 
-//        System.out.println(tvSavedState.getPower());        System.out.println(tvSavedState.getPlace());        System.out.println(tvSavedState.isIdle());
     }
 
     private static Equipment restoreSavedState(Equipment unit) throws IOException, ClassNotFoundException {
@@ -42,9 +37,7 @@ public class Serialization {
         ObjectInputStream out = new ObjectInputStream(tempIn);
         Equipment savedTV = (Equipment)out.readObject();
         System.out.println("---param from serialized object");
-        System.out.println(savedTV.getPower());
-        System.out.println(savedTV.getPlace());
-        System.out.println(savedTV.isIdle());
+        printCurrentParam(savedTV);
         return savedTV;
     }
 
@@ -56,15 +49,16 @@ public class Serialization {
         out.close();
     }
 
-    private static void xmsSave(Equipment unit) {
-
+    private static void printCurrentParam(Equipment myTV) {
+        System.out.println(myTV.getPower());
+        System.out.println(myTV.getPlace());
+        System.out.println(myTV.isIdle());
     }
 
     private static Equipment createUnit(Units unitType, Places place) {
         Equipment newEq = null;
         switch (unitType) {
-            case Fridge: newEq = new Fridge(place) {
-            };
+            case Fridge: newEq = new Fridge(place);
                 break;
             case PC: newEq = new PC(place, "SuperPC");
                 break;
