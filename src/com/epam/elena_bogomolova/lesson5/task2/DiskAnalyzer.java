@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.*;
 import java.util.List;
 
-public class DiskAnalyzer extends SupMethods {
+public class DiskAnalyzer {
 
     private static int nBig = 5;
     private static String letter = "s";
@@ -17,8 +17,8 @@ public class DiskAnalyzer extends SupMethods {
     public static void main(String[] args) {
         String path = getPath();
         folder = new File(path);
-        File[] files = folder.listFiles();
-        if (files.length > 0) {
+        filesList = folder.listFiles();
+        if (filesList.length > 0) {
             selectFunctionToRun();
             askUserToContinue();
         } else {
@@ -74,28 +74,13 @@ public class DiskAnalyzer extends SupMethods {
     }
 
     private static void filesByFirstLetter() {
-//        File[] files = folder.listFiles();
-        List<Character> listFirstLetters = getFirstCharsList(filesList);
+        List<Character> listFirstLetters = SupMethods.getFirstCharsList(filesList);
         HashSet<Character> usedLetters = new HashSet<>(listFirstLetters);
         System.out.println("---Amount of files/folders, which names begin with letters:");
-        countAndPrintNumByLetters(filesList, listFirstLetters, usedLetters);
-    }
-
-    private static void countAndPrintNumByLetters(File[] fileNames, List<Character> listFirstLetters, HashSet<Character> usedLetters) {
-        int letterBeginnings = 0;
-        for (char letter : usedLetters) {
-            int numFilesBeginL = countFirstLetters(listFirstLetters, letter);
-            System.out.println(letter + ": " + numFilesBeginL);
-            letterBeginnings += numFilesBeginL;
-        }
-        int notLetter = fileNames.length - letterBeginnings;
-        if (notLetter > 0) {
-            System.out.println("The number of files with symbolic beginnings: " + notLetter);
-        } else System.out.println("No files with symbolic beginnings");
+        SupMethods.countAndPrintNumByLetters(filesList, listFirstLetters, usedLetters);
     }
 
     private static void averageFileSize() {
-//        File[] files = folder.listFiles();
         double sumSizeKb = 0;
         try {
             for (File f: filesList) {
@@ -106,20 +91,23 @@ public class DiskAnalyzer extends SupMethods {
         } catch (NullPointerException e) {
             System.out.println("Specified folder is empty");
         }
-
     }
 
     private static void findNBiggest(int nBig) {
-        double[] listSizes = new double[filesList.length - 1];
-        Arrays.sort(listSizes);
-
+        ArrayList<File> sortedListFiles = new ArrayList<>();
+        Collections.addAll(sortedListFiles, filesList);
+        sortedListFiles.sort(new FileSizeComparator());
+        System.out.println(nBig + " files with the biggest sizes are:");
+        for (int i = sortedListFiles.size() - 1; i > sortedListFiles.size() - 6; i--) {
+            File f = sortedListFiles.get(i);
+            System.out.printf("%1$s (size %2$d)\n", f.getName(), f.length());
+        }
     }
 
-
     private static void findFileNameWithMaxSelectedLetterNum(String letter) {
-//        File[] allFiles = getListFilesWithS(folder);
         if (filesList.length > 0) {
-            File maxS = getFileWithMaxChar(filesList, letter);
+            File[] listFilesWithS = SupMethods.getListFilesWithS(folder);
+            File maxS = SupMethods.getFileWithMaxChar(listFilesWithS, letter);
             System.out.println("\nThe path to the file with max number 's' letters: " + maxS.getPath());
         } else System.out.println("No files with 's' in name in the specified directory");
     }
@@ -139,4 +127,5 @@ public class DiskAnalyzer extends SupMethods {
         }
         return path;
     }
+
 }
