@@ -14,7 +14,7 @@ public abstract class Equipment extends OutputStream {
     private static final String PLACES_HINT = "(Hint: possible places are: kitchen, room, bedroom, laundry)";
     private static final String ASK_PLACE_INPUT = "Enter new place you want to move to and press Enter";
 
-    protected long idlePower;
+    protected static long idlePower;
     protected static long power;
 
     protected Places place;
@@ -31,13 +31,6 @@ public abstract class Equipment extends OutputStream {
 
     public Equipment(Places place) {
         this.place = place;
-    }
-
-    public Equipment (long idlePower, Places place, String name, Boolean idle) {
-        this.idlePower = idlePower;
-        this.place = place;
-        this.name = name;
-        this.idle = idle;
     }
 
     public Equipment(String name) {
